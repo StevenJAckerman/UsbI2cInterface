@@ -93,25 +93,25 @@ namespace TestUsbI2cInterface
                 get { return _mode; }
             }
 
-            private readonly ere_I2C_AI418ML.Channel _channel;
-            public ere_I2C_AI418ML.Channel Channel
+            private readonly MCP3424.AdcChannel _channel;
+            public MCP3424.AdcChannel Channel
             {
                 get { return _channel; }
             }
 
-            private readonly ere_I2C_AI418ML.Size _size;
-            public ere_I2C_AI418ML.Size Size
+            private readonly MCP3424.AdcSize _size;
+            public MCP3424.AdcSize Size
             {
                 get { return _size; }
             }
 
-            private readonly ere_I2C_AI418ML.Pga _pga;
-            public ere_I2C_AI418ML.Pga Pga
+            private readonly MCP3424.AdcPga _pga;
+            public MCP3424.AdcPga Pga
             {
                 get { return _pga; }
             }
 
-            internal AdcBackgroundWorkerArgs(AdcMode mode, ere_I2C_AI418ML.Channel channel, ere_I2C_AI418ML.Size size, ere_I2C_AI418ML.Pga pga)
+            internal AdcBackgroundWorkerArgs(AdcMode mode, MCP3424.AdcChannel channel, MCP3424.AdcSize size, MCP3424.AdcPga pga)
             {
                 this._mode = mode;
                 this._channel = channel;
@@ -223,15 +223,15 @@ namespace TestUsbI2cInterface
                     _backgroundWorkerAdc.WorkerSupportsCancellation = true;
 
                     AdcMode mode = AdcMode.Raw;
-                    ere_I2C_AI418ML.Channel channel = ere_I2C_AI418ML.Channel.Channel0;
-                    ere_I2C_AI418ML.Size size = ere_I2C_AI418ML.Size.Size12Bit;
-                    ere_I2C_AI418ML.Pga pga = ere_I2C_AI418ML.Pga.Gain1;
+                    MCP3424.AdcChannel channel = MCP3424.AdcChannel.Channel0;
+                    MCP3424.AdcSize size = MCP3424.AdcSize.Size12Bit;
+                    MCP3424.AdcPga pga = MCP3424.AdcPga.Gain1;
                     try
                     {
                         Enum.TryParse<AdcMode>(comboBoxAdcMode.SelectedValue.ToString(), out mode);
-                        Enum.TryParse<ere_I2C_AI418ML.Channel>(comboBoxChannel.SelectedValue.ToString(), out channel);
-                        Enum.TryParse<ere_I2C_AI418ML.Size>(comboBoxSize.SelectedValue.ToString(), out size);
-                        Enum.TryParse<ere_I2C_AI418ML.Pga>(comboBoxGain.SelectedValue.ToString(), out pga);
+                        Enum.TryParse<MCP3424.AdcChannel>(comboBoxChannel.SelectedValue.ToString(), out channel);
+                        Enum.TryParse<MCP3424.AdcSize>(comboBoxSize.SelectedValue.ToString(), out size);
+                        Enum.TryParse<MCP3424.AdcPga>(comboBoxGain.SelectedValue.ToString(), out pga);
                     }
                     catch (Exception ex)
                     {
@@ -476,11 +476,11 @@ namespace TestUsbI2cInterface
         {
             comboBoxAdcMode.DataSource = EnumExtensions.Values<AdcMode>();
             comboBoxAdcMode.DisplayMember = "name";
-            comboBoxChannel.DataSource = EnumExtensions.Values<ere_I2C_AI418ML.Channel>(); // adc.Channels;
+            comboBoxChannel.DataSource = EnumExtensions.Values<MCP3424.AdcChannel>();
             comboBoxChannel.DisplayMember = "name";
-            comboBoxSize.DataSource = EnumExtensions.Values<ere_I2C_AI418ML.Size>();
+            comboBoxSize.DataSource = EnumExtensions.Values < MCP3424.AdcSize>();
             comboBoxSize.DisplayMember = "name";
-            comboBoxGain.DataSource = EnumExtensions.Values<ere_I2C_AI418ML.Pga>();
+            comboBoxGain.DataSource = EnumExtensions.Values<MCP3424.AdcPga>();
             comboBoxGain.DisplayMember = "name";
 
             comboBoxServo.SelectedIndex = 0;

@@ -73,6 +73,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="MCP3424.cs" />
     <Compile Include="PCA9685.cs" />
     <Compile Include="PCF8574.cs" />
     <Compile Include="Program.cs" />
